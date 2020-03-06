@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script src="https://kit.fontawesome.com/1920229c36.js" crossorigin="anonymous"></script>
+        <base href="/">
+       <link rel="stylesheet" href="/home.css" >
+    </head>
+    <body>
+     
+      <form action="/create_todo" method="POST">
+     
+          <div id="container">
+            <h1><%= title%></h1>
+              <div id="description">
+                    <p>DESCRIPTION</p>
+                    <input type="text" id="text" name="description" placeholder="What do you need to do?">
+              </div>
+              <span id="container_2">
+                  <div id="category">
+                      <p>CATEGORY</p>
+                      <label for="category">Choose a category</label>
+                      <select name="category" id="dropdown">
+                       
+                        <option>personal</option>
+                        <option>work</option>
+                        <option>school</option>
+                        <option>cleanig</option>
+                        <option>other</option>
+                      </select>
+                  </div>
+                  <div id="date">
+                      <p>DUE DATE</p>                        
+                      <input type="date" name="date">
+                  </div>
+              </span>
+              <div id="buttons">
+                  <button id="addTask" type="submit"><i class="fas fa-plus"></i> ADD TASK</button>
+                 
+              </div>
+          </div>
+         
+        
+      </form>
+     
+     <form action="/delete_todo" method="POST">
+        <button id="deletetask" type="submit"><i class="fas fa-trash-alt"></i> DELETE TASK</button>
+        <% for(let i of todo_list) {%>
+          <div id="display">
+             <input type="checkbox" name="checkbox" value="<%=i._id%>"><span ><%=i.description %></span> <br>
+             <span id="color"><i class="fas fa-calendar-week"></i> <%=i.date %></span>
+             <span id="right"><%=i.category %></span>
+          </div>
+          <% } %>
+  
+     </form>
+
+    </body>
+</html>
